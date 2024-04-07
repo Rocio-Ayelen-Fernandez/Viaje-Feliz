@@ -1,23 +1,28 @@
 <?php
 
     include 'Viaje.php';
+    include 'Pasajero.php';
 
     //ARREGLOS DE PASAJEROS
-    $p1=["nombre"=>"Juan", "apellido" => "Ramos", "dni" => "39517428"];
-    $p2=["nombre"=>"Valentina", "apellido" => "Rodriguez", "dni" => "42794801"];
-    $p3=["nombre"=>"Enzo", "apellido" => "Diaz", "dni" => "30431514"];
-    $p4=["nombre"=>"Maria", "apellido" => "Rojas", "dni" => "22812370"];
+    $objP1= new Pasajero("Juan", "Ramos", 2991822372, 39517428);
+    $objP2= new Pasajero("Valentina", "Rodriguez", 2993773249, 42794801);
+    $objP3= new Pasajero("Enzo", "Diaz", 2991260841, 30431514);
+    $objP4= new Pasajero("Maria", "Rojas", 2998218402, 22812370);
 
-    $arregloPasajeros = [$p1, $p2, $p3, $p4];
+    $arregloPasajeros = [$objP1, $objP2, $objP3, $objP4];
 
     //OBJETO VIAJE (EJ: 3682, "Buenos Aires", 10, $arregloPasajeros )
-    $objViaje = new Viaje("", "", "", $arregloPasajeros);
+    $objViaje = new Viaje(3682, "Buenos Aires", 10, $arregloPasajeros);
 
     //VARIABLES
     $opcion=0;
     $valorIng="";
-    //echo $objViaje."\n";
+
     
+    $objViaje->ModificarPasajero(22812370, "XLR8", "Diez", "454677986");
+    echo $objViaje."\n";
+    
+    /*
     echo "Bienvenido al sistema\n";
     echo "Elija una opcion";
     echo "\n1. Cargar un viaje\n2. Modificar codigo de viaje\n3. Modificar destino\n4. Modificar cantidad maxima de pasajeros\n5. Cargar Nuevo pasajero\n6. Ver datos\n7. Salir\n";
@@ -99,5 +104,7 @@
         echo "\n1. Cargar un viaje\n2. Modificar codigo de viaje\n3. Modificar destino\n4. Modificar cantidad maxima de pasajeros\n5. Cargar Nuevo pasajero\n6. Ver datos\n7. Salir\n";
         $opcion= trim(fgets(STDIN));   
     }
+
+    */
     
 ?>
