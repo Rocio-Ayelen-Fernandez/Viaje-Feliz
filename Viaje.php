@@ -53,12 +53,12 @@
         //STRING
         public function __toString(){
             $pasajeros="";
-            foreach ($this->getPasajeros() as $key => $value) {
-                $mensaje = $mensaje.$value.", ";
+            foreach ($this->getPasajeros() as $persona) {
+                $pasajeros = $pasajeros .$persona["nombre"]." ".$persona["apellido"]." ".$persona["dni"].", ";
             }
 
             return "Codigo de Viaje: ".$this->getCodigo().", Destino: ".$this->getDestino()
-            .", Maximo de pasajeros".$this->getCantMax()." Pasajeros: ".$pasajeros;
+            .", Maximo de pasajeros: ".$this->getCantMax().", Pasajeros: ".$pasajeros;
         }
 
     }
