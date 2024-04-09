@@ -50,7 +50,7 @@
 
         //STRING
         public function __toString(){
-            return "Nombre: ".$this->getNombre().", Apeliido: ".$this->getApellido().", Telefono: ".$this->getTelefono().", DNI: ".$this->getDni();
+            return "Nombre: ".$this->getNombre().", Apellido: ".$this->getApellido().", Telefono: ".$this->getTelefono().", DNI: ".$this->getDni();
         }
 
 

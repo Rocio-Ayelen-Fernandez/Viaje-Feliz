@@ -68,13 +68,18 @@
         public function verificarPasajero($numDni){
             $indicePasajero=null;
             $i=0;
-            do{
-                //($this->getPasajeros()) devuelve el arreglo de pasajeros
-                if( ( ($this->getPasajeros())[$i]->getDni() ) == $numDni ){
-                    $indicePasajero=$i;
-                }
-                $i++;
-            }while( ($indicePasajero == null) && $i < ( count( ($this->getPasajeros()) ) )/*Cantidad de arreglos*/);
+            if(count($this->getPasajeros()) > 0 ){
+                
+                do{
+                    
+                    //($this->getPasajeros()) devuelve el arreglo de pasajeros
+                    if( ( ($this->getPasajeros())[$i]->getDni() ) == $numDni ){
+                        $indicePasajero=$i;
+                    }
+                    $i++;
+                }while( ($indicePasajero == null) && $i < ( count( ($this->getPasajeros()) ) )/*Cantidad de arreglos*/);
+                
+            }
             return $indicePasajero;
         }
 
@@ -88,9 +93,7 @@
             $estado = false;
             $nuevoArreglo=$this->getPasajeros();
             $verificacion = $this->verificarPasajero($nuevoPasajero->getDni());
-            echo "Verificacion es: ".$verificacion."\n";
-            echo "La cnatidad de arreglos es".count($nuevoArreglo)."\n";
-            echo "Cantidad maxima de array es: ".$this->getCantMax()."\n";
+            
             if( ($verificacion) == null && count($nuevoArreglo) < $this->getCantMax()  ){
                 $nuevoArreglo[ count($nuevoArreglo) ] = $nuevoPasajero;
                 
@@ -101,31 +104,19 @@
             return $estado;
         }
 
-        /**
-         * Verifica que el responsable ingresado este en el viaje y modifica sus datos segun 
-         */
-        public function modificarResponsable($nEmpleado, $nuevoNombre, $nuevoApellido, $nuevaLicencia){
-            $estado = false;
-            if (($this->getResponsable())->getEmpleado() == $nEmpleado){
-                $estado = true;
-                
-                ($this->getResponsable())->setNombre($nuevoNombre);
-                ($this->getResponsable())->setApellido($nuevoApellido);
-                ($this->getResponsable())->setLicencia($nuevaLicencia); 
-            }
-            return $estado;
-        }
-
 
         //STRING
         public function __toString(){
             $pasajeros="";
             foreach ($this->getPasajeros() as $persona) {
-                $pasajeros = $pasajeros .$persona .", ";
+                $pasajeros = $pasajeros .$persona ."\n";
+            }
+            if($pasajeros == ""){
+                $pasajeros = "No hay pasajeros en este vuelo\n";
             }
 
             return "Codigo de Viaje: ".$this->getCodigo().", Destino: ".$this->getDestino()
-            .", Maximo de pasajeros: ".$this->getCantMax().", Pasajeros: ".$pasajeros."Responsable: ".$this->getResponsable();
+            .", Maximo de pasajeros: ".$this->getCantMax().", Pasajeros: \n".$pasajeros."Responsable: ".$this->getResponsable();
         }
 
     }

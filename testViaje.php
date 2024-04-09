@@ -4,19 +4,20 @@
     include 'Pasajero.php';
     include 'ResponsableV.php';
 
-    //ARREGLOS DE PASAJEROS
+    /*
+    //ARREGLOS DE PASAJEROS (Test)
     $objP1= new Pasajero("Juan", "Ramos", 2991822372, 39517428);
     $objP2= new Pasajero("Valentina", "Rodriguez", 2993773249, 42794801);
     $objP3= new Pasajero("Enzo", "Diaz", 2991260841, 30431514);
     $objP4= new Pasajero("Maria", "Rojas", 2998218402, 22812370);
 
-    $arregloPasajeros = [$objP1, $objP2, $objP3, $objP4];
-
-    
-
+    */
+    //$arregloPasajeros = [$objP1, $objP2, $objP3, $objP4];
+    $arregloPasajeros=[];
 
     //OBJETO VIAJE (EJ: 3682, "Buenos Aires", 10, $arregloPasajeros, $objResponsable )
     $objViaje = null;
+    //OBJ RESPONSABLE (EJ: "Jorge", "Alba", 2516, 19753410)
     $objResponsable = null;
 
     //VARIABLES
@@ -34,15 +35,16 @@
     
     
     
-    echo "Bienvenido al sistema\n";
+    echo "**********************\nBienvenido al sistema\n**********************\n";
     echo "Elija una opcion\n";
-    echo "1. Cargar un viaje\n2. Modificar o agregar datos de viaje\n3. Salir";
+    echo "1. Cargar un viaje\n2. Modificar o agregar datos de viaje\n3. Salir\n";
     $opcion = trim(fgets(STDIN));
 
     while($opcion!=3){
 
         switch($opcion){
             case 1:
+                echo "***************\nCargar un viaje\n***************\n";
                 echo "Ingrese el codigo de viaje: ";
                 $codigo = trim(fgets(STDIN));
 
@@ -68,7 +70,9 @@
                 //OBJETO RESPONSABLE
                 $objResponsable = new ResponsableV($nombre, $apellido, $nEmpleado, $nLicencia);
 
-                echo "Se cargaran pasajeros por defecto\n";
+                //echo "Se cargaran pasajeros por defecto\n";
+                echo "Se deberan cargar los pasajeros\n";
+                echo "*********************************\n";
 
                 //OBJETO VIAJE
 
@@ -77,16 +81,20 @@
                 break;
             case 2:
                 if($objViaje === null){
+                    echo "****************************************\n";
                     echo "No existe una clase Viaje para modificar\n";
+                    echo "****************************************\n";
                 }else{
-
+                    echo "\n**************************\nModificar o Agregar datos\n**************************\n";
                     echo "1. Modificar datos del viaje\n2. Cargar Nuevo pasajero\n3. Modificar Pasajero\n4. Modificar Responsable de Viaje\n5. Ver datos\n6. Salir\n";
                     $opcionMod = trim(fgets(STDIN));
 
                     while($opcionMod != 6){
                         switch ($opcionMod) {
                             case 1:
+                                echo "*************************\n";
                                 echo "Modificar datos del viaje\n";
+                                echo "*************************\n";
 
                                 echo "Ingrese el codigo de viaje: ";
                                 $valorIng = trim(fgets(STDIN));
@@ -102,7 +110,9 @@
     
                                 break;
                             case 2:
+                                echo "*********************\n";
                                 echo "Cargar Nuevo Pasajero\n";
+                                echo "*********************\n";
 
                                 echo "Ingrese los datos del pasajero\n";
                                 echo "Ingrese el nombre: ";
@@ -126,12 +136,14 @@
                                 }
                                 break;
                             case 3:
+                                echo "******************\n";
                                 echo "Modificar Pasajero\n";
+                                echo "******************\n";
 
-                                echo "Ingrese el DNI del pasajero que dese modificar";
+                                echo "Ingrese el DNI del pasajero que dese modificar\n";
                                 $dni = trim(fgets(STDIN));
                                 $verificacion = $objViaje->verificarPasajero($dni);
-                                if($verificacion != null){
+                                if($verificacion !== null){
                                     echo "Se ha encontrado el pasajero,  los datos.\n";
                                     echo "Proceda a ingresar los datos a modificar\n";
                                     echo "Ingrese el nombre: ";
@@ -153,8 +165,9 @@
 
                                 break;
                             case 4:
-
+                                echo "******************************\n";
                                 echo "Modificar Responsable de Viaje\n";
+                                echo "******************************\n";
 
                                 echo "Ingrese el numero de empleado del responsable a modificar: ";
                                 $nEmpleado = trim(fgets(STDIN));
@@ -182,15 +195,18 @@
 
                                 break;
                             case 5:
+                                echo "*********\n";
                                 echo "Ver datos\n";
+                                echo "*********\n";
 
                                 echo $objViaje."\n";
                                 break;
                             default:
-                            echo "La opcion elegida no se encuentra disponible\n";
+                            echo "\nLa opcion elegida no se encuentra disponible\n";
                                 break;
     
                         }
+                        echo "*****************************************************\n";
 
                         echo "1. Modificar datos del viaje\n2. Cargar Nuevo pasajero\n3. Modificar Pasajero\n4. Modificar Responsable de Viaje\n5. Ver datos\n6. Salir\n";
                         $opcionMod = trim(fgets(STDIN));
@@ -207,7 +223,7 @@
         }
 
         echo "Elija una opcion\n";
-        echo "1. Cargar un viaje\n2. Modificar o agregar datos de viaje\n3. Salir";
+        echo "1. Cargar un viaje\n2. Modificar o agregar datos de viaje\n3. Salir\n";
         $opcion = trim(fgets(STDIN));
     }
 
