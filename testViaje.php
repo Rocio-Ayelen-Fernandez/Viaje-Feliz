@@ -86,7 +86,7 @@
                     echo "****************************************\n";
                 }else{
                     echo "\n**************************\nModificar o Agregar datos\n**************************\n";
-                    echo "1. Modificar datos del viaje\n2. Cargar Nuevo pasajero\n3. Modificar Pasajero\n4. Modificar Responsable de Viaje\n5. Ver datos\n6. Salir\n";
+                    echo "1. Modificar datos del viaje\n2. Cargar Nuevo pasajero\n3. Modificar Pasajero\n4. Modificar Responsable de Viaje\n5. Ver datos\n6. Volver al menu anterior\n";
                     $opcionMod = trim(fgets(STDIN));
 
                     while($opcionMod != 6){
@@ -186,7 +186,7 @@
                                     ($objViaje->getResponsable())->setApellido($apellido);
 
                                     echo "Ingrese la licencia: ";
-                                    $nlicencia = trim(fgets(STDIN));
+                                    $nLicencia = trim(fgets(STDIN));
                                     ($objViaje->getResponsable())->setLicencia($nLicencia);                                    
                                      
                                 }else{
@@ -208,11 +208,12 @@
                         }
                         echo "*****************************************************\n";
 
-                        echo "1. Modificar datos del viaje\n2. Cargar Nuevo pasajero\n3. Modificar Pasajero\n4. Modificar Responsable de Viaje\n5. Ver datos\n6. Salir\n";
+                        echo "1. Modificar datos del viaje\n2. Cargar Nuevo pasajero\n3. Modificar Pasajero\n4. Modificar Responsable de Viaje\n5. Ver datos\n6. Volver al menu anterior\n";
                         $opcionMod = trim(fgets(STDIN));
 
 
                     }
+                    echo "*****************************************************\n";
 
                 }
 
@@ -225,91 +226,10 @@
         echo "Elija una opcion\n";
         echo "1. Cargar un viaje\n2. Modificar o agregar datos de viaje\n3. Salir\n";
         $opcion = trim(fgets(STDIN));
+        echo "*****************************************************\n";
     }
 
+    echo "Adios\n";
 
 
-
-    /*
-    echo "1. Modificar datos del viaje\n2. Cargar Nuevo pasajero\n3. Modificar Pasajero\n4. Modificar Responsable de Viaje\n5. Ver datos\n6. Salir\n";
-    $opcion = trim(fgets(STDIN));
-    while($opcion!=3){
-        
-        
-        switch ($opcion) {
-            case 1:
-                echo "Opcion elejida: Cargar un viaje\n";
-                echo "Ingrese numero de viaje: ";
-                $valorIng= trim(fgets(STDIN));
-                $objViaje->setCodigo($valorIng);
-
-                echo "Ingrese destino: ";
-                $valorIng= trim(fgets(STDIN));
-                $objViaje->setDestino($valorIng);
-
-                echo "Ingrese limite de pasajetos: ";
-                $valorIng= trim(fgets(STDIN));
-                $objViaje->setCantMax($valorIng);
-
-                echo "Se ingresaran pasajeros por defecto\n";
-                break;
-
-            case 2:
-                echo "Opcion elejida: Modificar codigo de viaje\n";
-                echo "Ingrese numero de viaje: ";
-                $valorIng= trim(fgets(STDIN));
-                $objViaje->setCodigo($valorIng);
-                break;
-
-            case 3:
-                echo "Opcion elejida: Modificar destino\n";
-                echo "Ingrese destino: ";
-                $valorIng= trim(fgets(STDIN));
-                $objViaje->setDestino($valorIng);
-                break;
-
-            case 4:
-                echo "Opcion elejida: Modificar cantidad maxima de pasajeros\n";
-                echo "Ingrese limite de pasajetos: ";
-                $valorIng= trim(fgets(STDIN));
-                $objViaje->setCantMax($valorIng);
-                break;
-
-            case 5:
-                echo "Opcion elejda: Cargar Nuevo pasajero\n";
-                $aPasajeros = $objViaje->getPasajeros();
-                echo "Ingrese nombre del pasajero: ";
-                $valorIng = trim(fgets(STDIN));
-                $nuevoPasajero["nombre"] = $valorIng;
-
-                echo "Ingrese apellido del pasajero: ";
-                $valorIng = trim(fgets(STDIN));
-                $nuevoPasajero["apellido"] = $valorIng;
-
-                echo "Ingrese DNI del pasajero, sin puntos: ";
-                $valorIng = trim(fgets(STDIN));
-                $nuevoPasajero["dni"] = $valorIng;
-
-                $aPasajeros[count($aPasajeros)] = $nuevoPasajero;
-
-                $objViaje->setPasajeros($aPasajeros);
-                break;
-        
-            case 6:
-                echo "Opcion elejda: Ver datos\n";
-                echo $objViaje."\n";
-                break;
-            case 7:
-                echo "Hasta Luego\n";
-                break;
-            default:
-                echo "Opcion no disponible\n";
-                break;
-        }
-        echo "Elija una opcion";
-        echo "\n1. Cargar un viaje\n2. Modificar codigo de viaje\n3. Modificar destino\n4. Modificar cantidad maxima de pasajeros\n5. Cargar Nuevo pasajero\n6. Ver datos\n7. Salir\n";
-        $opcion= trim(fgets(STDIN));   
-    }
-    
-    */
 ?>
